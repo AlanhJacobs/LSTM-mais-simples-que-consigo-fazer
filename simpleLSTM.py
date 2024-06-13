@@ -1,6 +1,6 @@
 import keras
 
-from keras.layers import LSTM
+from keras.layers import LSTM, Embedding
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
@@ -22,4 +22,4 @@ padded_sequences = pad_sequences(sequences)
 print(padded_sequences)
 
 model = Sequential()
-model.add
+model.add(Embedding(input_dim=len))
