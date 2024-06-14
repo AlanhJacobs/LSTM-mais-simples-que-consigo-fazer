@@ -42,6 +42,7 @@ print(padded_perguntas, vocab_size, max_sequence_length)
 model = Sequential()
 model.add(Embedding(input_dim=vocab_size, output_dim=100, input_length=max_sequence_length))
 model.add(LSTM(32, return_sequences=True))
+model.add(LSTM(32, return_sequences=True))
 model.add(TimeDistributed(Dense(vocab_size, activation='softmax')))
 
 # compila o modelo
@@ -51,7 +52,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.summary()
 
 # treina o modelo
-model.fit(x=padded_perguntas, y=padded_respostas, epochs=1000, verbose=2)
+model.fit(x=padded_perguntas, y=padded_respostas, epochs=1000, verbose=2, batch_size=16)
 
 model.save("simpleLSTM.keras")
 
