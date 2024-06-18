@@ -28,6 +28,5 @@ while True:
     # Decodificar o índice predito de volta para palavras
     predicted_answer = tokenizer.sequences_to_texts([predicted_index])[0]
 
-    #print(f"Pergunta: {nova_pergunta}")
-    #print(f"Resposta predita: {predicted_answer}")
-    print(predicted_answer)
+    print(f"Pergunta: {nova_pergunta}")
+    print(f"Resposta predita: {predicted_answer}")

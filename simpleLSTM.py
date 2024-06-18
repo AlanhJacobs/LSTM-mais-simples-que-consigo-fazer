@@ -1,25 +1,28 @@
 import pickle
-
-from keras.layers import LSTM, Embedding, Dense, TimeDistributed
+from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
+from keras.optimizers import Adam
+
+import matplotlib.pyplot as plt
 
 perguntas = [] 
 respostas = []
 
 # abre o arquivo com as frases manuscritas
-with open("perguntas.txt", 'r') as p:
+with open("dataset/perguntas.txt", 'r') as p:
     # le o arquivo
     perguntas = p.read()
     # separa em linhas
     perguntas = perguntas.split("\n")
 
-with open("respostas.txt", 'r') as r:
+with open("dataset/respostas.txt", 'r') as r:
     # le o arquivo
     respostas = r.read()
     # separa em linhas
     respostas = respostas.split("\n")
+
 
 # cria um tokenizador
 tokenizer = Tokenizer()
@@ -36,26 +39,30 @@ padded_respostas = pad_sequences(tokenized_respostas, maxlen=max_sequence_length
 # obtenho o tamanho do vocabulario
 vocab_size = len(tokenizer.word_index) + 1
 
-print(padded_perguntas, vocab_size, max_sequence_length)
-
 # cria o modelo
 model = Sequential()
-model.add(Embedding(input_dim=vocab_size, output_dim=100, input_length=max_sequence_length))
-model.add(LSTM(32, return_sequences=True))
-model.add(LSTM(32, return_sequences=True))
+model.add(Embedding(input_dim=vocab_size, output_dim=64, input_length=max_sequence_length))
+# conjunto pequenos de dado, poucas camadas
+model.add(LSTM(256, return_sequences=True))
+model.add(Dropout(0.2))
 model.add(TimeDistributed(Dense(vocab_size, activation='softmax')))
 
-# compila o modelo
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+optimizer = Adam(learning_rate=1e-2, weight_decay=1e-5)
 
-# resumo do modelo
-model.summary()
+# compila o modelo
+model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # treina o modelo
-model.fit(x=padded_perguntas, y=padded_respostas, epochs=1000, verbose=2, batch_size=16)
+history  = model.fit(x=padded_perguntas, y=padded_respostas, epochs=200, verbose=2, batch_size=1)
 
 model.save("simpleLSTM.keras")
 
 # Salvando o tokenizer
 with open('tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+# plotagem dos graficos
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.legend()
+plt.show()

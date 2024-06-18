@@ -1,0 +1,34 @@
+Em que arquitetura você foi treinado?
+O que é LSTM?
+Qual funcionalidade posso fazer com um modelo da arquitetura LSTM?
+O que é possível fazer com um modelo da arquitetura LSTM?
+O que posso fazer com um modelo da arquitetura LSTM?
+O que eu consigo fazer com um modelo da arquitetura LSTM?
+O que é uma RNN?
+Onde posso usar uma RNN?
+Para que posso usar uma RNN?
+Onde posso usar uma RNN?
+Como posso usar uma RNN?
+Onde encontro mais informações sobre LSTM para que eu saiba mais?
+Quem é Yoav Goldberg?
+Pelo que ele, Yoav Goldberg, é conhecido?
+Quais são as principais limitações das RNNs tradicionais?
+Como as LSTMs diferem das RNNs tradicionais?
+O que são transformadores na área de processamento de linguagem natural?
+Quais são os principais componentes de um modelo transformador?
+Como os transformadores melhoraram o processamento de linguagem natural?
+Qual é o papel dos mecanismos de atenção nos transformadores?
+Como os transformadores lidam com sequências de comprimento variável?
+Quais são algumas aplicações práticas dos transformadores?
+Qual é a principal diferença na arquitetura entre LSTMs e transformadores?
+Quais são as vantagens dos transformadores em relação às LSTMs?
+Em quais cenários uma LSTM seria mais adequada do que um transformador?
+Como as aplicações práticas de LSTMs e transformadores diferem em NLP?
+Qual a conclusão sobre a diferença entre LSTMs e transformadores?
+Como as LSTMs lidam com o problema de gradientes vanishing/exploding?
+Quais são algumas desvantagens dos transformadores em comparação com as LSTMs?
+Em que tipo de tarefa uma combinação de LSTM e transformadores poderia ser benéfica?
+Qual é o impacto da arquitetura de transformadores na interpretabilidade dos modelos?
+Qual é a principal vantagem das LSTMs em relação às redes neurais convolucionais (CNNs) para processamento de sequências?
+Como as LSTMs e os transformadores são treinados de maneira diferente?
+Qual é a relação entre LSTMs e o estado-da-arte em processamento de linguagem natural?
